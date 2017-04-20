@@ -1,0 +1,8 @@
+<div ng-init="getOneUser()">
+  <form ng-submit="updateUser(user)" method="post">
+    <input type="text" value="{{user.firstname}}" ng-model="user.firstname">
+    <input type="text" value="{{user.lastname}}" ng-model="user.lastname">
+    <input type="date" value="{{user.birthday}}" ng-model="user.birthday">
+    <input type="submit">
+  </form>
+</div>
