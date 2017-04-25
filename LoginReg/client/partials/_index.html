@@ -1,0 +1,19 @@
+<div ng-controller = 'loginController'>
+  <h1>Register</h1>
+<form ng-model = "registration" ng-submit = "register()">
+    <input type="text" ng-model = "registration.first_name" placeholder= "first name"><br>
+    <input type="text"  ng-model = "registration.last_name" placeholder= "last name"><br>
+    <input type="email"  ng-model = "registration.email" placeholder= "email"><br>
+    <input type="password"  ng-model = "registration.password" placeholder= "password"><br>
+    <input type="password" ng-model = "registration.confirm_password" placeholder= "confirm password"><br>
+    <input type="date" ng-model = "registration.birthday"><br>
+    <input type="submit" value = "register">
+</form>
+</br>
+<h1>Login</h1>
+<form ng-model = "userLogin" ng-submit = "login()">
+  <input type="email"  ng-model = "userLogin.email" placeholder= "email"><br>
+  <input type="password"  ng-model = "userLogin.password" placeholder= "password"><br>
+  <input type="submit" value = "login">
+</form>
+</div>
