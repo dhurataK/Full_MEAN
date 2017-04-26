@@ -1,0 +1,7 @@
+<div ng-controller = 'loginController'>
+  <h1>Welcome, {{thisUser.first_name}}!</h1>
+  <button ng-click="logout()">Logout</button>
+  <div ng-init= "getUsers()">
+    <p ng-repeat ="user in users">{{user.first_name }} {{user.last_name }} {{user.email}} {{user.birthday | date}}</p>
+  </div>
+</div>
