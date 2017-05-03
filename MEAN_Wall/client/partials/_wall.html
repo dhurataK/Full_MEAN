@@ -1,0 +1,32 @@
+<div ng-controller = 'loginController' ng-init="getUsers()">
+  <h1> MEAN Wall <span id="welcome">Welcome, {{thisUser.first_name}}! <button ng-click="logout()">Logout</button> </span></h1>
+<hr>
+<div id="messageForm">
+  <h2>Post a message:</h2>
+  <form method="post" ng-model="message" ng-submit="postMessage()">
+    <textarea name="message" rows="8" cols="135" ng-model="message.post"></textarea><br>
+    <input type="submit" value="Post a message">
+  </form>
+</div>
+
+  <div class="messages" ng-init="getMessages()">
+    <div ng-repeat="message in messages | orderBy:'message.createdAt':true">
+      <h3>{{message._user.first_name}} - {{message.createdAt | date:"h:mma MM/dd/yyyy"}}</h3>
+      <p>{{message.message}}</p>
+      <div class="comments" ng-init='getComments()'>
+        <div ng-repeat='comment in comments'>
+          <div ng-if="comment._message._id == message._id">
+            <h3>{{comment._user.first_name}} -{{comment.createdAt | date:"h:mma MM/dd/yyyy"}} </h3>
+            <p>{{comment.comment}}</p>
+          </div>
+        </div>
+        <form ng-submit="postComment(comment, message)"  method="post">
+          <h3>Post a comment:</h3>
+          <textarea name="comment" rows="6" cols="80" ng-model="comment"></textarea><br>
+          <input type="hidden" name="message" ng-model="message">
+          <input type="submit" value="Post a comment">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
