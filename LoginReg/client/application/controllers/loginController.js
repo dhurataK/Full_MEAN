@@ -30,4 +30,26 @@ angular.module('app')
           throw err;
         })
     }
+
+    $scope.getUsers = function() {
+      console.log("GEt users te loginController");
+      $http.get('/users')
+        .then(function(response) {
+        // console.log(response.data);
+        $scope.users =response.data;
+        const thisUserId = $cookies.get('userID');
+        for (var i = 0; i < $scope.users.length; i++) {
+          if($scope.users[i]._id == thisUserId){
+            $scope.thisUser = $scope.users[i];
+            $scope.users.splice(i,1);
+            break;
+          }
+        }
+        // console.log($scope.thisUser);
+        })
+        .catch(function(err) {
+          console.log("Errori te Login");
+          throw err;
+        })
+    }
   }])

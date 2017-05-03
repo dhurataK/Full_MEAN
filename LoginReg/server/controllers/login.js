@@ -3,7 +3,7 @@ module.exports = {
     login: function(request, response) {
       User.findOne({email:request.body.email})
         .then(function(user) {
-          console.log("User ", user);
+          console.log("User logged in", user);
           login(request,response,user);
         })
         .catch(function(err) {

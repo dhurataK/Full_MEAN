@@ -1,19 +1,50 @@
 <div ng-controller = 'loginController'>
   <h1>Register</h1>
-<form ng-model = "registration" ng-submit = "register()">
-    <input type="text" ng-model = "registration.first_name" placeholder= "first name"><br>
-    <input type="text"  ng-model = "registration.last_name" placeholder= "last name"><br>
-    <input type="email"  ng-model = "registration.email" placeholder= "email"><br>
-    <input type="password"  ng-model = "registration.password" placeholder= "password"><br>
-    <input type="password" ng-model = "registration.confirm_password" placeholder= "confirm password"><br>
-    <input type="date" ng-model = "registration.birthday"><br>
+<form name="registerForm" ng-model = "registration" ng-submit = "register()">
+  <div ng-messages="registerForm.first_name.$error">
+    <div ng-message="required">*</div>
+    <div ng-message="minlength">First name is too short. </div>
+  </div>
+    <input type="text" ng-model = "registration.first_name" placeholder="first name" name="first_name" minlength='2' required><br>
+    <div ng-messages="registerForm.last_name.$error">
+      <div ng-message="required">*</div>
+      <div ng-message="minlength">Last name is too short. </div>
+    </div>
+    <input type="text"  name="last_name" ng-model = "registration.last_name" placeholder= "last name"  minlength='2' required ><br>
+    <div ng-messages="registerForm.email.$error">
+      <div ng-message="required">*</div>
+      <div ng-message="email">Invalid email. </div>
+    </div>
+    <input type="email"  ng-model = "registration.email" placeholder= "email" name="email" required><br>
+    <div ng-messages="registerForm.password.$error">
+      <div ng-message="required">*</div>
+      <div ng-message="minlength">Invalid email. </div>
+    </div>
+    <input type="password" name="password" ng-model = "registration.password" placeholder= "password" required><br>
+    <div ng-messages="registerForm.c_pw.$error">
+      <div ng-message="required">*</div>
+      <div ng-message="minlength">Invalid email. </div>
+    </div>
+    <input type="password" name="c_pw" ng-model = "registration.confirm_password" placeholder= "confirm password" required><br>
+    <div ng-messages="registerForm.birthday.$error">
+      <div ng-message="required">*</div>
+      <div ng-message="minlength">Invalid email. </div>
+    </div>
+    <input type="date" name="birthday" ng-model = "registration.birthday" required><br>
     <input type="submit" value = "register">
 </form>
 </br>
 <h1>Login</h1>
-<form ng-model = "userLogin" ng-submit = "login()">
-  <input type="email"  ng-model = "userLogin.email" placeholder= "email"><br>
-  <input type="password"  ng-model = "userLogin.password" placeholder= "password"><br>
+<form name="loginForm" ng-model = "userLogin" ng-submit = "login()">
+  <div ng-messages="loginForm.l_email.$error">
+    <div ng-message="required">*</div>
+    <div ng-message="email">Invalid email. </div>
+  </div>
+  <input name="l_email" type="email"  ng-model = "userLogin.email" placeholder= "email" required><br>
+  <div ng-messages="loginForm.pass.$error">
+    <div ng-message="required">*</div>
+  </div>
+  <input type="password" name="pass" ng-model = "userLogin.password" placeholder= "password" required><br>
   <input type="submit" value = "login">
 </form>
 </div>
